@@ -13,10 +13,10 @@ an example config for lazy.nvim would look like this
 ```lua
 {
     "butteronarchbtw/tabgaze.nvim",
-    config = function() {
+    config = function()
         require("tabgaze").setup()
-        vim.keymap.set("n", "<leader>tp", ":Tabgaze<CR>", {silent = true}),
-    }
+        vim.keymap.set("n", "<leader>tp", ":Tabgaze<CR>", {silent = true})
+    end
 }
 ```
 

@@ -82,15 +82,15 @@ function M.toggle_window()
     end 
     -- INFO: modifiable has to always be behind set_lines
     vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<CR>", ":lua require('test_plugin').select_item()<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "q", ":lua require('test_plugin').toggle_window()<CR>", {silent = true})
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<ESC>", ":lua require('test_plugin').toggle_window()<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<CR>", ":lua require('tabgaze').select_item()<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "q", ":lua require('tabgaze').toggle_window()<CR>", {silent = true})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<ESC>", ":lua require('tabgaze').toggle_window()<CR>", {silent = true})
     vim.api.nvim_set_current_win(win_id)
 
-    vim.cmd(string.format("autocmd CursorMoved <buffer=%s> lua require('test_plugin').on_cursor_moved()", bufnr))
+    vim.cmd(string.format("autocmd CursorMoved <buffer=%s> lua require('tabgaze').on_cursor_moved()", bufnr))
     -- very specific bug, that if you use :q to leave the window, it does not reset the
     -- cursor pos
-    vim.cmd(string.format("autocmd BufLeave <buffer=%s> lua require('test_plugin').toggle_window()", bufnr))
+    vim.cmd(string.format("autocmd BufLeave <buffer=%s> lua require('tabgaze').toggle_window()", bufnr))
 end
 
 function M.on_cursor_moved()
@@ -156,7 +156,7 @@ function M.set_cursor_on_prev_item()
 end
 
 function M.setup()
-    vim.cmd("command! Tabgaze lua require('test_plugin').toggle_window()")
+    vim.cmd("command! Tabgaze lua require('tabgaze').toggle_window()")
 end
 
 return M
