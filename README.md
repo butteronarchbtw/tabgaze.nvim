@@ -1,5 +1,7 @@
 # TabGaze
 
+![tabgaze switcher open](./screenshot/window_open.png)
+
 - a simple plugin to get an overview of your currently open tab pages
 - quickly switch to a tabpage without risking wrist injuries
 - (basically harpoon for tabs)
